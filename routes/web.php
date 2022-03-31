@@ -23,10 +23,20 @@ Route::post('/searchBook', array(
     'uses' => 'App\Http\Controllers\LibroController@search'
 ));
 
+Route::post('/searchBook', array(
+    'as' => 'searchBook',
+    'uses' => 'App\Http\Controllers\LibroController@search'
+));
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', function(){
+    return view('home');
+})->name('guest');
+
 
 Route::resource('libros', 'App\Http\Controllers\LibroController');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');

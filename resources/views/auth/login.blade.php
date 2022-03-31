@@ -1,5 +1,8 @@
 <x-guest-layout>
+
+
     <x-jet-authentication-card>
+
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
@@ -11,6 +14,7 @@
                 {{ session('status') }}
             </div>
         @endif
+
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -39,9 +43,15 @@
                     </a>
                 @endif
 
+                <x-jet-secondary-button class="ml-4">
+                    <a href="{{ route('guest') }}">Hacer busquedas</a>
+                </x-jet-secondary-button>
+
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
+
+
             </div>
         </form>
     </x-jet-authentication-card>
