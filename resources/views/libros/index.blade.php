@@ -9,6 +9,12 @@
           </div>
       @endif
 
+      <div class="row g-3 align-items-center">
+          <div class="col-md-6">
+                <a href="{{ route('home') }}" class="btn btn-success">Volver a buscar</a>
+          </div>
+      </div>
+
       <table id="booksTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -62,7 +68,7 @@
                 "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sInfoPostFix": "",
-                "sSearch": "Buscar:",
+                "sSearch": "Buscar (filtro):",
                 "sUrl": "",
                 "sInfoThousands": ",",
                 "sLoadingRecords": "Cargando...",
