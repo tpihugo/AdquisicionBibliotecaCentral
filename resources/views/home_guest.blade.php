@@ -3,29 +3,7 @@
 @section('content')
     <div class="content">
         <div class="container">
-
-          @if (session('message'))
-              <div class="alert alert-success">
-                  {{ session('message') }}
-              </div>
-          @endif
-
-<div class="card-body">
-      @if(Auth::check())
-        <a href="{{route('libros.create')}}">Crear libro</a>
-
-          <form method="POST" action="{{ route('logout') }}">
-              @csrf
-              <input type="submit" value="Cerrar sesion">
-          </form>
-      @else
-
-      <a href="{{route('login')}}">Iniciar sesion</a>
-
-      @endif
-
-
-
+      <div class="card-body">
           <form action="{{route('searchBook')}}" method="POST" enctype="multipart/form-data" class="col-12">
                 @csrf
                 @if($errors->any())

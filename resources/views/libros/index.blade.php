@@ -11,14 +11,16 @@
 
       <div class="row g-3 align-items-center">
           <div class="col-md-6">
-                <a href="{{ route('home') }}" class="btn btn-success">Volver a buscar</a>
+                <a href="{{ route('guest') }}" class="btn btn-success">Volver a buscar</a>
           </div>
       </div>
 
       <table id="booksTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
-                  <th>Acciones</th>
+                  @if(Auth::check())
+                    <th>Acciones</th>
+                  @endif
                     <th>Numero de adquisición</th>
                     <th>Titulo</th>
                     <th>Autor</th>

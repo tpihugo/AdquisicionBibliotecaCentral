@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LibroController extends Controller
 {
@@ -27,30 +28,53 @@ class LibroController extends Controller
 
        $edit =  route('libros.edit', $value['id']);
        $acciones = '';
-       $acciones = '
-           <div class="btn-acciones">
-               <div class="btn-circle">
-                   <a href="'.$edit.'" class="btn btn-success" title="Actualizar">
-                       <i class="far fa-edit"></i>
-                   </a>
-               </div>
-           </div>
-       ';
-       $books[$key] = array(
-           $acciones,
-            $value['num_adquisicion'],
-            $value['titulo'],
-            $value['autor'],
-            $value['editorial'],
-            $value['pais'],
-            $value['anio'],
-            $value['num_paginas'],
-            $value['procedencia'],
-            $value['clasificacion'],
-            $value['ubicacion'],
-            $value['codigo'],
-            $value['fechaDeRegistro'],
-        );
+       if(Auth::check()){
+         $acciones = '
+             <div class="btn-acciones">
+                 <div class="btn-circle">
+                     <a href="'.$edit.'" class="btn btn-success" title="Actualizar">
+                         <i class="far fa-edit"></i>
+                     </a>
+                 </div>
+             </div>
+         ';
+       }
+
+       if(Auth::check()){
+         $books[$key] = array(
+             $acciones,
+              $value['num_adquisicion'],
+              $value['titulo'],
+              $value['autor'],
+              $value['editorial'],
+              $value['pais'],
+              $value['anio'],
+              $value['num_paginas'],
+              $value['procedencia'],
+              $value['clasificacion'],
+              $value['ubicacion'],
+              $value['codigo'],
+              $value['fechaDeRegistro'],
+          );
+       }else{
+         $books[$key] = array(
+             // $acciones,
+              $value['num_adquisicion'],
+              $value['titulo'],
+              $value['autor'],
+              $value['editorial'],
+              $value['pais'],
+              $value['anio'],
+              $value['num_paginas'],
+              $value['procedencia'],
+              $value['clasificacion'],
+              $value['ubicacion'],
+              $value['codigo'],
+              $value['fechaDeRegistro'],
+          );
+       }
+
+
       }
       return $books;
     }
@@ -79,6 +103,8 @@ class LibroController extends Controller
        $vsBooks = $this->cargarDT($books);
        return view('libros.index')->with('books',$vsBooks);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
