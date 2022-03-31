@@ -13,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::post('/searchBook', array(
+    'as' => 'searchBook',
+    'middleware' => 'auth',
+    'uses' => 'App\Http\Controllers\LibroController@search'
+));
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('libros', 'App\Http\Controllers\LibroController');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
