@@ -32,7 +32,7 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-md-4">
                             <label for="num_adquisicion">Número de adquisicion o inventario</label>
-                            <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$book->num_adquisicion}}" required>
+                            <input readonly type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$book->num_adquisicion}}" required>
                         </div>
                         <div class="col-md-4">
                             <label for="titulo">Titulo</label>
@@ -93,10 +93,10 @@
                         <input type="text" class="form-control" id="codigo" name="codigo" value="{{$book->codigo}}" required>
                     </div>
 
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <label for="fechaDeRegistro">fechaDeRegistro</label>
                         <input type="date" class="form-control" id="fechaDeRegistro" name="fechaDeRegistro" value="{{$book->fechaDeRegistro}}" required>
-                    </div>
+                    </div> -->
               </div>
 
               <div class="row g-3 align-items-center">
