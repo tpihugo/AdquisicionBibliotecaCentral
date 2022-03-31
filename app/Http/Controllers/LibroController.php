@@ -15,9 +15,9 @@ class LibroController extends Controller
      */
     public function index()
     {
-      $books = Libro::limit('500')->get();
-      $vsbooks = $this->cargarDT($books);
-      return view('libros.index')->with('books', $vsbooks);
+      // $books = Libro::limit('500')->get();
+      // $vsbooks = $this->cargarDT($books);
+      // return view('libros.index')->with('books', $vsbooks);
     }
 
     function cargarDT($query){
