@@ -31,16 +31,16 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-md-4">
                             <label for="num_adquisicion">Número de adquisicion o inventario</label>
-                            <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{old('num_adquisicion')}}" required>
+                            <input readonly type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion}}"  >
                         </div>
                         <div class="col-md-4">
                             <label for="titulo">Titulo</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" value="{{old('titulo')}}" required>
+                            <input type="text" class="form-control" id="titulo" name="titulo" value="-"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="autor">Autor</label>
-                            <input type="text" class="form-control" id="autor" name="autor" value="{{old('autor')}}" required>
+                            <input type="text" class="form-control" id="autor" name="autor" value="-"  >
                         </div>
                     </div>
 
@@ -48,17 +48,17 @@
 
                         <div class="col-md-4">
                             <label for="editorial">Editorial</label>
-                            <input type="text" class="form-control" id="editorial" name="editorial" value="{{old('editorial')}}" required>
+                            <input type="text" class="form-control" id="editorial" name="editorial" value="-"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="pais">Pais</label>
-                            <input type="text" class="form-control" id="pais" name="pais" value="{{old('pais')}}" required>
+                            <input type="text" class="form-control" id="pais" name="pais" value="-"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="anio">Año</label>
-                            <input type="text" class="form-control" id="anio" name="anio" value="{{old('anio')}}" required>
+                            <input type="text" class="form-control" id="anio" name="anio" value="-"  >
                         </div>
                   </div>
 
@@ -66,17 +66,17 @@
 
                       <div class="col-md-4">
                           <label for="num_paginas">Numero de paginas</label>
-                          <input type="text" class="form-control" id="num_paginas" name="num_paginas" value="{{old('num_paginas')}}" required>
+                          <input type="text" class="form-control" id="num_paginas" name="num_paginas" value="-"  >
                       </div>
 
                       <div class="col-md-4">
                           <label for="procedencia">Procedencia</label>
-                          <input type="text" class="form-control" id="procedencia" name="procedencia" value="{{old('procedencia')}}" required>
+                          <input type="text" class="form-control" id="procedencia" name="procedencia" value="-"  >
                       </div>
 
                       <div class="col-md-4">
                           <label for="clasificacion">Clasificacion</label>
-                          <input type="text" class="form-control" id="clasificacion" name="clasificacion" value="{{old('clasificacion')}}" required>
+                          <input type="text" class="form-control" id="clasificacion" name="clasificacion" value="-"  >
                       </div>
                 </div>
 
@@ -84,18 +84,18 @@
 
                     <div class="col-md-4">
                         <label for="ubicacion">Ubicacion</label>
-                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{old('ubicacion')}}" required>
+                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="-"  >
                     </div>
 
                     <div class="col-md-4">
                         <label for="codigo">Codigo de barras</label>
-                        <input type="text" class="form-control" id="codigo" name="codigo" value="{{old('codigo')}}" required>
+                        <input type="text" class="form-control" id="codigo" name="codigo" value="-"  >
                     </div>
 
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <label for="fechaDeRegistro">fechaDeRegistro</label>
-                        <input type="date" class="form-control" id="fechaDeRegistro" name="fechaDeRegistro" value="{{old('fechaDeRegistro')}}" required>
-                    </div>
+                        <input type="date" class="form-control" id="fechaDeRegistro" name="fechaDeRegistro" value="{{old('fechaDeRegistro')}}"  >
+                    </div> -->
               </div>
 
               <div class="row g-3 align-items-center">

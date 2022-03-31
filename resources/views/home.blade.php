@@ -4,7 +4,7 @@
     <div class="content">
         <div class="container">
       <div class="card-body">
-
+        <a href="{{route('libros.create')}}">Crear libro</a>
           <form action="{{route('searchBook')}}" method="POST" enctype="multipart/form-data" class="col-12">
                 @csrf
                 @if($errors->any())

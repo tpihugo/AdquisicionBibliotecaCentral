@@ -15,6 +15,7 @@ class LibroController extends Controller
      */
     public function index()
     {
+
       // $books = Libro::limit('500')->get();
       // $vsbooks = $this->cargarDT($books);
       // return view('libros.index')->with('books', $vsbooks);
@@ -86,7 +87,9 @@ class LibroController extends Controller
      */
     public function create()
     {
-        return view('libros.create');
+        $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
+        // dd($lastNum_adquisicion->last);
+        return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
     }
 
     /**
@@ -97,20 +100,20 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-      // $validateData = $this->validate($request,[
-      //     'num_adquisicion'=>'required',
-      //     'autor'=>'required',
-      //     'titulo'=>'required',
-      //     'editorial'=>'required',
-      //     'pais'=>'required',
-      //     'anio'=>'required',
-      //     'num_paginas'=>'required',
-      //     'procedencia'=>'required',
-      //     'clasificacion'=>'required',
-      //     'ubicacion'=>'required',
-      //     'codigo'=>'required',
-      //     'fechaDeRegistro'=>'required',
-      // ]);
+      $validateData = $this->validate($request,[
+          'num_adquisicion'=>'required',
+          'autor'=>'required',
+          'titulo'=>'required',
+          'editorial'=>'required',
+          'pais'=>'required',
+          'anio'=>'required',
+          'num_paginas'=>'required',
+          'procedencia'=>'required',
+          'clasificacion'=>'required',
+          'ubicacion'=>'required',
+          'codigo'=>'required',
+          // 'fechaDeRegistro'=>'required',
+      ]);
 
       $newBook = new Libro();
 
@@ -124,8 +127,10 @@ class LibroController extends Controller
       $newBook->procedencia = $request->input('procedencia');
       $newBook->clasificacion = $request->input('clasificacion');
       $newBook->ubicacion = $request->input('ubicacion');
+
       $newBook->codigo = $request->input('codigo');
-      $newBook->fechaDeRegistro = $request->input('fechaDeRegistro');
+      // $newBook->fechaDeRegistro = $request->input('fechaDeRegistro');
+      $newBook->fechaDeRegistro = date('Y-m-d');
       $newBook->save();
 
       return redirect()->route('home');
@@ -165,7 +170,7 @@ class LibroController extends Controller
     public function update(Request $request, $id)
     {
         $book = Libro::find($id);
-        $book->num_adquisicion = $request->input('num_adquisicion');
+        // $book->num_adquisicion = $request->input('num_adquisicion');
         $book->autor = $request->input('autor');
         $book->titulo = $request->input('titulo');
         $book->editorial = $request->input('editorial');
@@ -176,7 +181,7 @@ class LibroController extends Controller
         $book->clasificacion = $request->input('clasificacion');
         $book->ubicacion = $request->input('ubicacion');
         $book->codigo = $request->input('codigo');
-        $book->fechaDeRegistro = $request->input('fechaDeRegistro');
+        $book->fechaDeRegistro = date('Y-m-d');
         $book->update();
 
         return redirect()->route('home');
