@@ -5,7 +5,6 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-
         <script src="https://cdn.tailwindcss.com"></script>
 
         <form method="POST" action="{{ route('register') }}">

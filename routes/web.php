@@ -47,6 +47,6 @@ Route::get('/logs', array(
 
 Route::resource('libros', 'App\Http\Controllers\LibroController');
 
- Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-     return view('dashboard');
- })->name('dashboard');
+ // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+ //     return view('dashboard');
+ // })->name('dashboard');
