@@ -12,7 +12,7 @@
 
 
   <div class="d-flex justify-content-center">
-   <div class="card text-center" style="width: 16rem;">
+   <div class="card text-center" style="width: 14rem;" >
 
       <img  src="{{ asset('img/adquisiciones.jpeg') }}" alt="logo adquisiciones">
       <div class="card-body">
@@ -24,8 +24,7 @@
             <a href="{{route('login')}}" class="btn btn-primary">Iniciar sesion</a>
             @else
               <a href="{{route('libros.create')}}" class="btn btn-primary">Crear libro</a>
-
-
+              <a href="{{route('logs')}}" class="btn btn-outline-secondary">Historial de acciones</a>
           @endif
 
       </div>

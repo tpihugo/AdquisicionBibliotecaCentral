@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Libro;
+use App\Models\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,7 @@ class LibroController extends Controller
       foreach ($query as $key => $value) {
 
        $edit =  route('libros.edit', $value['id']);
+       $delete =  route('deletebook', $value['id']);
        $acciones = '';
        if(Auth::check()){
          $acciones = '
@@ -34,6 +36,14 @@ class LibroController extends Controller
                  <div class="btn-circle">
                      <a href="'.$edit.'" class="btn btn-success" title="Actualizar">
                          <i class="far fa-edit"></i>
+                     </a>
+                 </div>
+             </div>
+
+             <div class="btn-acciones">
+                 <div class="btn-circle">
+                     <a href="'.$delete.'" class="btn btn-danger"  title="Borrar Prestamo">
+                        <i class="fas fa-eraser"></i>
                      </a>
                  </div>
              </div>
@@ -74,9 +84,40 @@ class LibroController extends Controller
           );
        }
 
-
       }
       return $books;
+    }
+
+    public function deleteBook($id){
+      // dd($id);
+      $book = Libro::find($id);
+
+      if($book){
+
+        $book->activo = 0;
+        $book->update();
+
+        $NewLog =  new Log();
+        $NewLog->tabla = 'Libros';
+        $NewLog->movimiento = 'Eliminacion(logica) de libro';
+        $NewLog->usuario_id = Auth::user()->id;
+        $NewLog->usuario_nombre = Auth::user()->name;
+        $NewLog->Acciones = 'Eliminacion';
+        $NewLog->num_libro = $book->num_adquisicion;
+        $NewLog->fecha_de_accion = date('Y-m-d');
+        $NewLog->save();
+
+        return redirect('home')->with(array(
+              'message'=>'Libro eliminado completamente'
+          ));
+
+      }else {
+        return redirect('home')->with(array(
+              'message'=>'No se pudo eliminar el libro'
+          ));
+      }
+
+
     }
 
     public function search(Request $request){
@@ -90,10 +131,13 @@ class LibroController extends Controller
 
        if(isset($search) && !is_null($search)){
          if($fieldSelected != 'num_adquisicion'){
-           $books = Libro::where($fieldSelected,'LIKE','%'.$search.'%')->get();
+           $books = Libro::where('activo','1')
+           ->where($fieldSelected,'LIKE','%'.$search.'%')
+           ->get();
 
          }else if ($fieldSelected == 'num_adquisicion'){ //fecha?
-           $books = Libro::where($fieldSelected,$search)->get();
+           $books = Libro::where('activo','1')
+           ->where($fieldSelected,$search)->get();
          }
        }else{
          return redirect('home')->with(array(
@@ -114,7 +158,7 @@ class LibroController extends Controller
     public function create()
     {
         $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
-        // dd($lastNum_adquisicion->last);
+
         return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
     }
 
@@ -159,7 +203,19 @@ class LibroController extends Controller
       $newBook->fechaDeRegistro = date('Y-m-d');
       $newBook->save();
 
-      return redirect()->route('home');
+      $NewLog =  new Log();
+      $NewLog->tabla = 'Libros';
+      $NewLog->movimiento = 'Creacion de libro';
+      $NewLog->usuario_id = Auth::user()->id;
+      $NewLog->usuario_nombre = Auth::user()->name;
+      $NewLog->num_libro = $newBook->num_adquisicion;
+      $NewLog->Acciones = 'Captura';
+      $NewLog->fecha_de_accion = date('Y-m-d');
+      $NewLog->save();
+
+      return redirect()->route('home')->with(array(
+            'message'=>'Libro capturado correctamente'
+        ));
 
     }
 
@@ -210,7 +266,19 @@ class LibroController extends Controller
         $book->fechaDeRegistro = date('Y-m-d');
         $book->update();
 
-        return redirect()->route('home');
+        $NewLog =  new Log();
+        $NewLog->tabla = 'Libros';
+        $NewLog->movimiento = 'Actualizacion de libro';
+        $NewLog->usuario_id = Auth::user()->id;
+        $NewLog->usuario_nombre = Auth::user()->name;
+        $NewLog->num_libro = $book->num_adquisicion;
+        $NewLog->Acciones = 'Actualizar';
+        $NewLog->fecha_de_accion = date('Y-m-d');
+        $NewLog->save();
+
+        return redirect()->route('home')->with(array(
+              'message'=>'Libro actualizado correctamente'
+          ));;
 
     }
 
