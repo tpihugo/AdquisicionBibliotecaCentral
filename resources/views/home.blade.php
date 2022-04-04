@@ -10,6 +10,28 @@
               </div>
           @endif
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    @if(Auth::check())
+    <a class="navbar-brand" href="#"> {{ Auth::user()->name }} </a>
+  @endif
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item" >
+          @if(Auth::check())
+            <form method="POST" class="d-flex" action="{{ route('logout') }}">
+                @csrf
+                <!-- <input type="submit" value="Cerrar sesion"> -->
+                <button type="submit" name="button" class=" btn btn-outline-danger">Cerrar sesion</button>
+            </form>
+          @endif
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
   <div class="d-flex justify-content-center">
    <div class="card text-center" style="width: 14rem;" >
@@ -22,17 +44,18 @@
             <!-- <p class="card-text">Adquisiciones biblioteca central</p> -->
             <a href="{{route('login')}}" class="btn btn-primary">Iniciar sesion</a>
             @else
-              <a href="{{route('libros.create')}}" class="btn btn-primary">Crear libro</a>
-              <a href="{{route('logs')}}" class="btn btn-outline-secondary">Historial de acciones</a>
+              <a href="{{route('libros.create')}}" class="btn btn-outline-success btn-sm btn-block">Crear libro</a>
+              <a href="{{route('logs')}}" class="btn btn-outline-secondary btn-sm btn-block">Historial de acciones</a>
+
           @endif
 
       </div>
       @if(Auth::check())
-        <form method="POST" action="{{ route('logout') }}">
+        <!-- <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <!-- <input type="submit" value="Cerrar sesion"> -->
+
             <button type="submit" name="button" class="btn btn-danger">Cerrar sesion</button>
-        </form>
+        </form> -->
       @endif
 
   </div>
