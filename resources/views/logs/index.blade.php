@@ -3,13 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-
-      <div class="row g-3 align-items-center">
-          <div class="col-md-6">
-                <a href="{{ route('guest') }}" class="btn btn-success">Volver a buscar</a>
-          </div>
-      </div>
-
       <table id="booksTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -19,7 +12,6 @@
                     <th>Numero de adquisicion de libro</th>
                     <th>Accion</th>
                     <th>Fecha de accion</th>
-
                 </tr>
                 </thead>
                 <tbody>
