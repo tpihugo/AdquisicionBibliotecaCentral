@@ -10,18 +10,39 @@
               </div>
           @endif
 
-<div class="d-flex justify-content-center">
- <div class="card text-center" style="width: 18rem;">
-    <img src="{{ asset('img/adquisiciones.jpeg') }}" alt="logo adquisiciones">
-    <div class="card-body">
-      <h5 class="card-title">Adquisiciones biblioteca central</h5>
-      <!-- <p class="card-text">Adquisiciones biblioteca central</p> -->
-      <a href="{{route('login')}}" class="btn btn-primary">Iniciar sesion</a>
-    </div>
-</div>
-</div>
+
+  <div class="d-flex justify-content-center">
+   <div class="card text-center" style="width: 16rem;">
+
+      <img  src="{{ asset('img/adquisiciones.jpeg') }}" alt="logo adquisiciones">
+      <div class="card-body">
+
+          <h5 class="card-title">Adquisiciones biblioteca central</h5>
+
+          @if(!Auth::check())
+            <!-- <p class="card-text">Adquisiciones biblioteca central</p> -->
+            <a href="{{route('login')}}" class="btn btn-primary">Iniciar sesion</a>
+            @else
+              <a href="{{route('libros.create')}}" class="btn btn-primary">Crear libro</a>
+
+
+          @endif
+
+      </div>
+      @if(Auth::check())
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <!-- <input type="submit" value="Cerrar sesion"> -->
+            <button type="submit" name="button" class="btn btn-danger">Cerrar sesion</button>
+        </form>
+      @endif
+
+  </div>
+  </div>
+
 
 <div class="card-body">
+  {{--
       @if(Auth::check())
         <a href="{{route('libros.create')}}">Crear libro</a>
 
@@ -29,11 +50,11 @@
               @csrf
               <input type="submit" value="Cerrar sesion">
           </form>
-      @else
+
+
 
       @endif
-
-
+      --}}
 
           <form action="{{route('searchBook')}}" method="POST" enctype="multipart/form-data" class="col-12">
                 @csrf
