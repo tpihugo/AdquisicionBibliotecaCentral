@@ -10,6 +10,17 @@
               </div>
           @endif
 
+<div class="d-flex justify-content-center">
+ <div class="card text-center" style="width: 18rem;">
+    <img src="{{ asset('img/adquisiciones.jpeg') }}" alt="logo adquisiciones">
+    <div class="card-body">
+      <h5 class="card-title">Adquisiciones biblioteca central</h5>
+      <!-- <p class="card-text">Adquisiciones biblioteca central</p> -->
+      <a href="{{route('login')}}" class="btn btn-primary">Iniciar sesion</a>
+    </div>
+</div>
+</div>
+
 <div class="card-body">
       @if(Auth::check())
         <a href="{{route('libros.create')}}">Crear libro</a>
@@ -19,8 +30,6 @@
               <input type="submit" value="Cerrar sesion">
           </form>
       @else
-
-      <a href="{{route('login')}}">Iniciar sesion</a>
 
       @endif
 

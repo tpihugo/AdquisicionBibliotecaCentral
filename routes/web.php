@@ -28,11 +28,13 @@ Route::post('/searchBook', array(
     'uses' => 'App\Http\Controllers\LibroController@search'
 ));
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/home', function(){
     return view('home');
 })->name('guest');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 
 Route::resource('libros', 'App\Http\Controllers\LibroController');
