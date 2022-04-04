@@ -34,7 +34,15 @@ Route::get('/home', function(){
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/deletebook/{id}', array(
+    'as' => 'deletebook',
+    'uses' => 'App\Http\Controllers\LibroController@deleteBook'
+));
 
+Route::get('/logs', array(
+    'as' => 'logs',
+    'uses' => 'App\Http\Controllers\LogController@index'
+));
 
 
 Route::resource('libros', 'App\Http\Controllers\LibroController');
