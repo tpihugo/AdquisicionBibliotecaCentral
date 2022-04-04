@@ -13,7 +13,6 @@
 
   <div class="d-flex justify-content-center">
    <div class="card text-center" style="width: 14rem;" >
-
       <img  src="{{ asset('img/adquisiciones.jpeg') }}" alt="logo adquisiciones">
       <div class="card-body">
 

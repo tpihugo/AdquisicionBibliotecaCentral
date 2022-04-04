@@ -1,6 +1,7 @@
  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}">Adquisición biblioteca</a>
+        <a class="navbar-brand" href="{{ route('guest') }}">Adquisición biblioteca</a>
+        <a href="{{ route('home') }}">Home</a>
         <button
             class="navbar-toggler"
             type="button"

@@ -6,6 +6,8 @@
             <x-jet-authentication-card-logo />
         </x-slot> -->
 
+        <script src="https://cdn.tailwindcss.com"></script>
+
         <x-slot name="logo">
           <x-jet-button class="ml-4">
                 <a href="{{ route('guest') }}">Hacer busquedas</a>
