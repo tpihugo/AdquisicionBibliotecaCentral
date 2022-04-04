@@ -1,10 +1,15 @@
 <x-guest-layout>
 
-
     <x-jet-authentication-card>
 
-        <x-slot name="logo">
+        <!-- <x-slot name="logo">
             <x-jet-authentication-card-logo />
+        </x-slot> -->
+
+        <x-slot name="logo">
+          <x-jet-button class="ml-4">
+                <a href="{{ route('guest') }}">Hacer busquedas</a>
+          </x-jet-button>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -42,10 +47,6 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
-                <x-jet-secondary-button class="ml-4">
-                    <a href="{{ route('guest') }}">Hacer busquedas</a>
-                </x-jet-secondary-button>
 
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
