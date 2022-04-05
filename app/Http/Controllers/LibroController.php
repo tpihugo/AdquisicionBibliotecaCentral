@@ -213,9 +213,11 @@ class LibroController extends Controller
       $NewLog->fecha_de_accion = date('Y-m-d');
       $NewLog->save();
 
-      return redirect()->route('home')->with(array(
-            'message'=>'Libro capturado correctamente'
-        ));
+      return redirect()->route('libros.create');
+
+      // return redirect()->route('home')->with(array(
+      //       'message'=>'Libro capturado correctamente'
+      //   ));
 
     }
 
