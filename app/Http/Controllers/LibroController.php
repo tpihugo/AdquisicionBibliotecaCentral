@@ -187,7 +187,8 @@ class LibroController extends Controller
 
       $validateNum = $request->input('num_adquisicion');
 
-      $Exist = Libro::where('num_adquisicion',$validateNum)->first();
+      $Exist = Libro::where('activo', '1')->
+      where('num_adquisicion',$validateNum)->first();
       // dd($Exist);
       if($Exist){
         return redirect()->route('libros.create')->with(array(
