@@ -31,7 +31,7 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-md-4">
                             <label for="num_adquisicion">Número de adquisicion o inventario</label>
-                            <input readonly type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion}}"  >
+                            <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion}}"  >
                         </div>
                         <div class="col-md-4">
                             <label for="titulo">Titulo</label>
