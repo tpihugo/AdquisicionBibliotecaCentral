@@ -185,6 +185,15 @@ class LibroController extends Controller
           // 'fechaDeRegistro'=>'required',
       ]);
 
+      $validateNum = $request->input('num_adquisicion');
+
+      $Exist = Libro::where('num_adquisicion',$validateNum)->first();
+      // dd($Exist);
+      if($Exist){
+        return redirect()->route('libros.create')->with(array(
+              'message'=>'Numero de adquisicion YA EXISTE'
+          ));
+      }
       $newBook = new Libro();
 
       $newBook->num_adquisicion = $request->input('num_adquisicion');
