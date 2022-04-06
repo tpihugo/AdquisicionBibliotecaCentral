@@ -171,7 +171,7 @@ class LibroController extends Controller
     public function store(Request $request)
     {
       $validateData = $this->validate($request,[
-          'num_adquisicion'=>'required',
+          // 'num_adquisicion'=>'required',
           'autor'=>'required',
           'titulo'=>'required',
           'editorial'=>'required',
@@ -185,19 +185,22 @@ class LibroController extends Controller
           // 'fechaDeRegistro'=>'required',
       ]);
 
-      $validateNum = $request->input('num_adquisicion');
+      // $validateNum = $request->input('num_adquisicion');
 
-      $Exist = Libro::where('activo', '1')->
-      where('num_adquisicion',$validateNum)->first();
-      // dd($Exist);
-      if($Exist){
-        return redirect()->route('libros.create')->with(array(
-              'message'=>'Numero de adquisicion YA EXISTE'
-          ));
-      }
+      // $Exist = Libro::where('activo', '1')->
+      // where('num_adquisicion',$validateNum)->first();
+      // // dd($Exist);
+      // if($Exist){
+      //   return redirect()->route('libros.create')->with(array(
+      //         'message'=>'Numero de adquisicion YA EXISTE'
+      //     ));
+      // }
+
       $newBook = new Libro();
-
-      $newBook->num_adquisicion = $request->input('num_adquisicion');
+      $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
+      $newBook->num_adquisicion = $lastNum_adquisicion->last+1;
+      // dd($newBook->num_adquisicion);
+       // = $request->input('num_adquisicion');
       $newBook->autor = $request->input('autor');
       $newBook->titulo = $request->input('titulo');
       $newBook->editorial = $request->input('editorial');
@@ -223,7 +226,18 @@ class LibroController extends Controller
       $NewLog->fecha_de_accion = date('Y-m-d');
       $NewLog->save();
 
-      return redirect()->route('libros.create');
+      $choose = $request->input('NewCopy');
+      if($choose == 'yes'){
+        return redirect()->route('libros.create')->with('book', $newBook);
+      }else {
+        $message = 'Libro creado correctamente, numero de adquisicion =' . $newBook->num_adquisicion;
+        return redirect()->route('libros.create')->with(array(
+              'message'=> $message
+          ));
+      }
+
+
+
 
       // return redirect()->route('home')->with(array(
       //       'message'=>'Libro capturado correctamente'
@@ -264,7 +278,7 @@ class LibroController extends Controller
     public function update(Request $request, $id)
     {
         $book = Libro::find($id);
-        // $book->num_adquisicion = $request->input('num_adquisicion');
+        $book->num_adquisicion = $request->input('num_adquisicion');
         $book->autor = $request->input('autor');
         $book->titulo = $request->input('titulo');
         $book->editorial = $request->input('editorial');
@@ -290,7 +304,7 @@ class LibroController extends Controller
 
         return redirect()->route('home')->with(array(
               'message'=>'Libro actualizado correctamente'
-          ));;
+          ));
 
     }
 
