@@ -11,6 +11,8 @@
             </div>
         @endif
 
+        @php ($option = 1)
+
         <form action="{{route('libros.store')}}" method="post" enctype="multipart/form-data" class="col-12">
             <div class="row">
                 <div class="col">
@@ -29,10 +31,10 @@
                     </div>
                     <br>
                     <div class="row g-3 align-items-center">
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <label for="num_adquisicion">Número de adquisicion o inventario</label>
-                            <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion}}"  >
-                        </div>
+                            <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion }}"  >
+                        </div> -->
                         <div class="col-md-4">
                             <label for="titulo">Titulo</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" value="-"  >
@@ -91,6 +93,15 @@
                         <label for="codigo">Codigo de barras</label>
                         <input type="text" class="form-control" id="codigo" name="codigo" value="-"  >
                     </div>
+
+                    <div class="col-md-4">
+                      <label for="fieldSelected">Desea crear ejemplar</label>
+                      <select class="form-select" aria-label="Default select example" name="newCopy">
+                          <option value="yes">Si</option>
+                          <option selected value="no">No</option>
+                      </select>
+                    </div>
+
 
                     <!-- <div class="col-md-4">
                         <label for="fechaDeRegistro">fechaDeRegistro</label>
