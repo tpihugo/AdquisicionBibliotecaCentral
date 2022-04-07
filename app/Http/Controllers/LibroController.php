@@ -157,9 +157,10 @@ class LibroController extends Controller
      */
     public function create()
     {
-        $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
+        // $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
 
-        return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
+        // return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
+        return view('libros.create')->with('lastNum_adquisicion');
     }
 
     /**
@@ -185,22 +186,19 @@ class LibroController extends Controller
           // 'fechaDeRegistro'=>'required',
       ]);
 
-      // $validateNum = $request->input('num_adquisicion');
+      $numAd = $request->input('num_adquisicion');
 
-      // $Exist = Libro::where('activo', '1')->
-      // where('num_adquisicion',$validateNum)->first();
-      // // dd($Exist);
-      // if($Exist){
-      //   return redirect()->route('libros.create')->with(array(
-      //         'message'=>'Numero de adquisicion YA EXISTE'
-      //     ));
-      // }
+      $Exist = Libro::where('activo', '1')->
+      where('num_adquisicion',$numAd)->first();
+      if($Exist){
+        return redirect()->route('libros.create')->with(array(
+              'message'=>'Numero de adquisicion YA EXISTE'
+          ));
+      }
 
       $newBook = new Libro();
-      $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
-      $newBook->num_adquisicion = $lastNum_adquisicion->last+1;
-      // dd($newBook->num_adquisicion);
-       // = $request->input('num_adquisicion');
+      $newBook->num_adquisicion = $numAd;
+
       $newBook->autor = $request->input('autor');
       $newBook->titulo = $request->input('titulo');
       $newBook->editorial = $request->input('editorial');
@@ -234,7 +232,7 @@ class LibroController extends Controller
 
         return view('libros.create')
         ->with('book', $newBook)
-        ->with('lastNum_adquisicion',$lastNum_adquisicion->last+1)
+        ->with('lastNum_adquisicion',$numAd+1)
         ->with('successMsg', $message);
       }else {
         $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
