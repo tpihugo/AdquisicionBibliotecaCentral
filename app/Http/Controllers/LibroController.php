@@ -226,11 +226,18 @@ class LibroController extends Controller
       $NewLog->fecha_de_accion = date('Y-m-d');
       $NewLog->save();
 
-      $choose = $request->input('NewCopy');
+      $choose = $request->input('newCopy');
+      $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
       if($choose == 'yes'){
-        return redirect()->route('libros.create')->with('book', $newBook);
+        // return redirect()->route('libros.create')->with('book', $newBook);
+        // return redirect()->route('create2',$newBook);
+
+        return view('libros.create')
+        ->with('book', $newBook)
+        ->with('lastNum_adquisicion',$lastNum_adquisicion->last+1)
+        ->with('successMsg', $message);
       }else {
-        $message = 'Libro creado correctamente, numero de adquisicion =' . $newBook->num_adquisicion;
+        $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
         return redirect()->route('libros.create')->with(array(
               'message'=> $message
           ));

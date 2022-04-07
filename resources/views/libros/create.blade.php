@@ -9,6 +9,12 @@
                 <h2>{{ session('message') }}</h2>
 
             </div>
+
+            @endif
+          @if(!empty($successMsg))
+          <div class="alert alert-success">
+              <h2>{{  $successMsg  }}</h2>
+          </div>
         @endif
 
         @php ($option = 1)
@@ -37,12 +43,12 @@
                         </div> -->
                         <div class="col-md-4">
                             <label for="titulo">Titulo</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" value="-"  >
+                            <input type="text" class="form-control" id="titulo" name="titulo" value="{{$book->titulo ?? '-' }}"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="autor">Autor</label>
-                            <input type="text" class="form-control" id="autor" name="autor" value="-"  >
+                            <input type="text" class="form-control" id="autor" name="autor" value="{{$book->autor ?? '-' }}"  >
                         </div>
                     </div>
 
@@ -50,17 +56,17 @@
 
                         <div class="col-md-4">
                             <label for="editorial">Editorial</label>
-                            <input type="text" class="form-control" id="editorial" name="editorial" value="-"  >
+                            <input type="text" class="form-control" id="editorial" name="editorial" value="{{$book->editorial ?? '-' }}"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="pais">Pais</label>
-                            <input type="text" class="form-control" id="pais" name="pais" value="-"  >
+                            <input type="text" class="form-control" id="pais" name="pais" value="{{$book->pais ?? '-' }}"  >
                         </div>
 
                         <div class="col-md-4">
                             <label for="anio">Año</label>
-                            <input type="text" class="form-control" id="anio" name="anio" value="-"  >
+                            <input type="text" class="form-control" id="anio" name="anio" value="{{$book->anio ?? '-' }}"  >
                         </div>
                   </div>
 
@@ -68,17 +74,17 @@
 
                       <div class="col-md-4">
                           <label for="num_paginas">Numero de paginas</label>
-                          <input type="text" class="form-control" id="num_paginas" name="num_paginas" value="-"  >
+                          <input type="text" class="form-control" id="num_paginas" name="num_paginas" value="{{$book->num_paginas ?? '-' }}"  >
                       </div>
 
                       <div class="col-md-4">
                           <label for="procedencia">Procedencia</label>
-                          <input type="text" class="form-control" id="procedencia" name="procedencia" value="-"  >
+                          <input type="text" class="form-control" id="procedencia" name="procedencia" value="{{$book->procedencia ?? '-' }}"  >
                       </div>
 
                       <div class="col-md-4">
                           <label for="clasificacion">Clasificacion</label>
-                          <input type="text" class="form-control" id="clasificacion" name="clasificacion" value="-"  >
+                          <input type="text" class="form-control" id="clasificacion" name="clasificacion" value="{{$book->clasificacion ?? '-' }}"  >
                       </div>
                 </div>
 
@@ -86,7 +92,7 @@
 
                     <div class="col-md-4">
                         <label for="ubicacion">Ubicacion</label>
-                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="-"  >
+                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{$book->ubicacion ?? '-' }}"  >
                     </div>
 
                     <div class="col-md-4">
