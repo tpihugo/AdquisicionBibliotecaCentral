@@ -98,6 +98,7 @@
                         <label for="fieldSelected">Buscar por:</label>
                         <select class="form-select" aria-label="Default select example" id="fieldSelected" name="fieldSelected">
                             <option selected value="num_adquisicion">Numero de adquisicion o inventario</option>
+                            <option value="rango">Por rango</option>
                             <option value="autor">Autor</option>
                             <option value="titulo">Titulo</option>
                             <option value="procedencia">Procedencia</option>

@@ -36,7 +36,19 @@
 
                     </div>
                     <br>
+
+                    <div class="row g-2 align-items-center">
+                      <div class="col-md-2">
+                        <label for="fieldSelected">Desea crear ejemplar</label>
+                        <select class="form-select" aria-label="Default select example" name="newCopy">
+                            <option value="yes">Si</option>
+                            <option selected value="no">No</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div class="row g-3 align-items-center">
+
                         <div class="col-md-4">
                             <label for="num_adquisicion">Número de adquisicion o inventario</label>
                             <input type="number" class="form-control" id="num_adquisicion" name="num_adquisicion" value="{{$lastNum_adquisicion  ?? ''}}"  >
@@ -53,6 +65,7 @@
                     </div>
 
                     <div class="row g-3 align-items-center">
+
 
                         <div class="col-md-4">
                             <label for="editorial">Editorial</label>
@@ -100,13 +113,13 @@
                         <input type="text" class="form-control" id="codigo" name="codigo" value="-"  >
                     </div>
 
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                       <label for="fieldSelected">Desea crear ejemplar</label>
                       <select class="form-select" aria-label="Default select example" name="newCopy">
                           <option value="yes">Si</option>
                           <option selected value="no">No</option>
                       </select>
-                    </div>
+                    </div> -->
 
 
                     <!-- <div class="col-md-4">

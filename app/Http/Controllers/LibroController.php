@@ -130,7 +130,7 @@ class LibroController extends Controller
        $books = '';
 
        if(isset($search) && !is_null($search)){
-         if($fieldSelected != 'num_adquisicion'){
+         if($fieldSelected != 'num_adquisicion' && $fieldSelected != 'rango'){
            $books = Libro::where('activo','1')
            ->where($fieldSelected,'LIKE','%'.$search.'%')
            ->get();
@@ -138,6 +138,12 @@ class LibroController extends Controller
          }else if ($fieldSelected == 'num_adquisicion'){ //fecha?
            $books = Libro::where('activo','1')
            ->where($fieldSelected,$search)->get();
+         }elseif ($fieldSelected == 'rango') {
+           $arrayValues = explode("-", $search);
+
+           $books = Libro::where('activo','1')
+           ->whereBetween('num_adquisicion', [$arrayValues[0], $arrayValues[1]])
+           ->get();
          }
        }else{
          return redirect('home')->with(array(
