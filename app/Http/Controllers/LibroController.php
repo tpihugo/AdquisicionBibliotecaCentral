@@ -242,7 +242,15 @@ class LibroController extends Controller
         ->with('successMsg', $message);
       }else {
         $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
-        return redirect()->route('libros.create')->with(array(
+        // return redirect()->route('libros.create')
+        // ->with('lastNum_adquisicion', $numAd+1)
+        // ->with(array(
+        //       'message'=> $message
+        //   ));
+
+        return view('libros.create')
+        ->with('lastNum_adquisicion', $numAd+1)
+        ->with(array(
               'message'=> $message
           ));
       }
