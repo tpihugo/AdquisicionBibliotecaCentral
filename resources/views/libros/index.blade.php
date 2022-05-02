@@ -16,16 +16,16 @@
                     <th>Acciones</th>
                   @endif
                     <th>Numero de adquisición</th>
-                    <th>Titulo</th>
+                    <th>Título</th>
                     <th>Autor</th>
                     <th>Editorial</th>
-                    <th>Pais</th>
+                    <th>País</th>
                     <th>Año</th>
-                    <th>Numero de paginas</th>
+                    <th>Número de paginas</th>
                     <th>Procedencia</th>
-                    <th>Clasificacion</th>
-                    <th>Ubicacion</th>
-		                <th>Codigo</th>
+                    <th>Clasificación</th>
+                    <th>Ubicación</th>
+		                <th>Código</th>
                     <th>Fecha de Registro</th>
 
                 </tr>

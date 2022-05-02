@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Libro;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,10 @@ class HomeController extends Controller
 
   public function index()
   {
-      return view('home');
+    // SELECT fields FROM table ORDER BY id DESC LIMIT 1;
+
+      $lastInserted = Libro::orderBy('num_adquisicion','desc')->take(1)->pluck('num_adquisicion');
+      return view('home')->with('lastNum_adquisicion',$lastInserted[0]);
   }
 
 
