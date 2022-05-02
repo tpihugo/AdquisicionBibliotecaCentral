@@ -32,10 +32,11 @@
     </div>
   </div>
 </nav>
-
+@if(Auth::check())
 <div class="col-md-3 alert alert-primary" role="alert">
   Ultimo libro capturado: <strong> {{$lastNum_adquisicion ?? ''}} </strong>
 </div>
+@endif
 
 
   <div class="d-flex justify-content-center">
