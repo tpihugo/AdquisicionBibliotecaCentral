@@ -107,12 +107,12 @@ class LibroController extends Controller
         $NewLog->fecha_de_accion = date('Y-m-d');
         $NewLog->save();
 
-        return redirect('home')->with(array(
+        return redirect('/')->with(array(
               'message'=>'Libro eliminado completamente'
           ));
 
       }else {
-        return redirect('home')->with(array(
+        return redirect('/')->with(array(
               'message'=>'No se pudo eliminar el libro'
           ));
       }
@@ -164,7 +164,6 @@ class LibroController extends Controller
     public function create()
     {
         // $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
-
         // return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
         return view('libros.create')->with('lastNum_adquisicion');
     }
