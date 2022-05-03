@@ -16,7 +16,7 @@ class HomeController extends Controller
   {
     // SELECT fields FROM table ORDER BY id DESC LIMIT 1;
 
-      $lastInserted = Libro::orderBy('num_adquisicion','desc')->take(1)->pluck('num_adquisicion');
+      $lastInserted = Libro::where('activo',1)->orderBy('num_adquisicion','desc')->take(1)->pluck('num_adquisicion');
       return view('home')->with('lastNum_adquisicion',$lastInserted[0]);
   }
 
