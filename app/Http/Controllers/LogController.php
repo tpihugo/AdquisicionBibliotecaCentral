@@ -9,7 +9,7 @@ class LogController extends Controller
 {
 
     public function index(){
-      $logs = Log::get();
+      $logs = Log::orderBy('fecha_de_accion', 'desc')->get();
       $Logs = $this->cargarDT($logs);
       return view('logs.index')->with('logs',$Logs);
     }

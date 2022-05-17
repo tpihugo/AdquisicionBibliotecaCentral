@@ -30,7 +30,7 @@ class LibroController extends Controller
        $edit =  route('libros.edit', $value['id']);
        $delete =  route('deletebook', $value['id']);
        $acciones = '';
-       if(Auth::check()){
+       if(Auth::check() && Auth::user()->role == 'normal'){
          $acciones = '
              <div class="btn-acciones">
                  <div class="btn-circle">
@@ -107,12 +107,13 @@ class LibroController extends Controller
         $NewLog->fecha_de_accion = date('Y-m-d');
         $NewLog->save();
 
-        return redirect('/')->with(array(
+
+        return redirect('dashboard')->with(array(
               'message'=>'Libro eliminado completamente'
           ));
 
       }else {
-        return redirect('/')->with(array(
+        return redirect('dashboard')->with(array(
               'message'=>'No se pudo eliminar el libro'
           ));
       }
@@ -125,11 +126,14 @@ class LibroController extends Controller
            'search'=>'required'
            ]);
 
+
        $fieldSelected = $request->input('fieldSelected');
        $search = $request->input('search');
        $books = '';
 
+
        if(isset($search) && !is_null($search)){
+
          if($fieldSelected != 'num_adquisicion' && $fieldSelected != 'rango'){
            $books = Libro::where('activo','1')
            ->where($fieldSelected,'LIKE','%'.$search.'%')
@@ -151,6 +155,7 @@ class LibroController extends Controller
            ));
        }
        $vsBooks = $this->cargarDT($books);
+       $message = 'Libro no encontrado.';
        return view('libros.index')->with('books',$vsBooks);
     }
 
@@ -163,8 +168,6 @@ class LibroController extends Controller
      */
     public function create()
     {
-        // $lastNum_adquisicion = DB::table('libros')->select(DB::raw("(select max(`num_adquisicion`)) as last" ))->first();
-        // return view('libros.create')->with('lastNum_adquisicion', ($lastNum_adquisicion->last+1));
         return view('libros.create')->with('lastNum_adquisicion');
     }
 
@@ -240,7 +243,7 @@ class LibroController extends Controller
         ->with('lastNum_adquisicion',$numAd+1)
         ->with('successMsg', $message);
       }else {
-        $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
+        // $message = 'Libro creado correctamente, numero de adquisicion: ' . $newBook->num_adquisicion;
         // return redirect()->route('libros.create')
         // ->with('lastNum_adquisicion', $numAd+1)
         // ->with(array(
@@ -249,9 +252,7 @@ class LibroController extends Controller
 
         return view('libros.create')
         ->with('lastNum_adquisicion', $numAd+1)
-        ->with(array(
-              'message'=> $message
-          ));
+        ->with('successMsg', $message);
       }
 
 
@@ -320,7 +321,7 @@ class LibroController extends Controller
         $NewLog->fecha_de_accion = date('Y-m-d');
         $NewLog->save();
 
-        return redirect()->route('home')->with(array(
+        return redirect()->route('dashboard')->with(array(
               'message'=>'Libro actualizado correctamente'
           ));
 
