@@ -130,7 +130,11 @@
 
               <div class="row g-3 align-items-center">
                 	<div class="col-md-6">
-                    		<a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
+                    @if(Auth::Check())
+                        <a href="{{ route('dashboard') }}" class="btn btn-danger">Cancelar</a>
+                    @else
+                		<a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
+                    @endif
                     		<button type="submit" class="btn btn-success">Guardar datos</button>
                 	</div>
             	</div>
@@ -138,7 +142,7 @@
           </form>
 
     @else
-        El periodo de Registro de Proyectos a terminado
+        Usted no tiene acceso.
     @endif
 
 </div>

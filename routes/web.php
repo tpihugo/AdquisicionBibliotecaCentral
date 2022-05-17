@@ -17,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->name('home');
 
+
+Route::get('/', function(){
+    return view('home');
+})->name('home');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+
+
 Route::post('/searchBook', array(
     'as' => 'searchBook',
     'middleware' => 'auth',
@@ -27,12 +36,6 @@ Route::post('/searchBook', array(
     'as' => 'searchBook',
     'uses' => 'App\Http\Controllers\LibroController@search'
 ));
-
-Route::get('/home', function(){
-    return view('home');
-})->name('guest');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/deletebook/{id}', array(
     'as' => 'deletebook',
