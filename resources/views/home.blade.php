@@ -101,74 +101,19 @@
         <div class="row">
           <!-- Grid column -->
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            {{-- <h6 class="text-uppercase mb-4 font-weight-bold">
-              Coordinación de Tecnologias para el Aprendizaje
-            </h6> --}}
-
-            {{-- <img src="img/cta_logo.jpg" alt="cta_logo" style="width: 160%; height: 100%; "> --}}
-
-
-
-
+            <img src="img/cta_logo.jpg" alt="cta_logo" style="width: 160%; height: 100%; margin-left: -9em; ">
           </div>
-          <!-- Grid column -->
 
           <hr class="w-100 clearfix d-md-none" />
 
           <!-- Grid column -->
-          {{-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-            <p>
-              <a class="text-white">MDBootstrap</a>
-            </p>
-            <p>
-              <a class="text-white">MDWordPress</a>
-            </p>
-            <p>
-              <a class="text-white">BrandFlow</a>
-            </p>
-            <p>
-              <a class="text-white">Bootstrap Angular</a>
-            </p>
-          </div> --}}
-          <!-- Grid column -->
-
-          <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          {{-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-            <h6 class="text-uppercase mb-4 font-weight-bold">
-              Useful links
-            </h6>
-            <p>
-              <a class="text-white">Your Account</a>
-            </p>
-            <p>
-              <a class="text-white">Become an Affiliate</a>
-            </p>
-            <p>
-              <a class="text-white">Shipping Rates</a>
-            </p>
-            <p>
-              <a class="text-white">Help</a>
-            </p>
-          </div> --}}
-
-          <!-- Grid column -->
-          <hr class="w-100 clearfix d-md-none" />
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-12 col-xl-12 mt-3">
-          <div class="row justify-content-center">
-              <div class="col-md-4 ">
-                <img class="w-100" src="img/cta_logo.jpg" alt="cta_logo" ">
-              </div>
-              <div class="col-md-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
-                <p><i class="fas fa-envelope mr-3"></i> cta.cucsh@administrativos.udg.mx</p>
-                <p><i class="fas fa-phone mr-3"></i> +52 33 3819 3300 ext: 23609</p>
-            </div>
-          </div>
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3" >
+          <br>
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+            {{-- <p><i class="fas fa-home mr-3"></i> Cucsh Belenes</p> --}}
+            <p><i class="fas fa-envelope mr-3"></i> cta.cucsh@administrativos.udg.mx</p>
+            <p><i class="fas fa-phone mr-3"></i> +52 33 3819 3300 ext: 23609</p>
+            {{-- <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p> --}}
           </div>
           <!-- Grid column -->
         </div>
