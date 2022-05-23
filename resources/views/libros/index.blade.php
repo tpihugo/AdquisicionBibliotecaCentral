@@ -9,6 +9,14 @@
           </div>
       @endif
 
+      <p>
+          @if(Auth::Check())
+              <a href="{{ route('dashboard') }}" class="btn btn-primary">< Regresar</a>
+          @else
+              <a href="{{ route('home') }}" class="btn btn-primary">< Regresar</a>
+          @endif
+      </p>
+
       <table id="booksTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -35,13 +43,7 @@
                 </tbody>
 
             </table>
-            <p>
-                @if(Auth::Check())
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary">< Regresar</a>
-                @else
-                    <a href="{{ route('home') }}" class="btn btn-primary">< Regresar</a>
-                @endif
-            </p>
+
 
   </div>
 

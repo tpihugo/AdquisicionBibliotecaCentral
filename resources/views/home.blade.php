@@ -2,7 +2,32 @@
 
 @section('content')
 
+<style>
+.card_background{
+    background: linear-gradient(0deg, rgba(140,143,130,0) 0%, rgba(217,217,217,1) 0%, rgba(180,195,218,0) 100%, rgba(246,246,246,1) 100%);
+}
+
+.my_background_body{
+    margin-top: -20px;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(0deg, rgba(140,143,130,0) 0%, rgba(60,130,236,1) 1%, rgba(217,217,217,1) 73%, rgba(246,246,246,1) 100%, rgba(180,195,218,0) 100%); */
+    background: radial-gradient(circle, rgba(150,205,228,1) 10%, rgba(53,141,201,1) 81%, rgba(61,87,156,0.6629026610644257) 100%);
+    /* background-attachment: fixed;
+    background-repeat: no-repeat; */
+
+}
+
+.my_margin{
+    margin-top: 50px;
+}
+
+
+</style>
 {{-- @if(Auth::check() && (Auth::user()->role == 'normal')) --}}
+
+<div class="my_background_body">
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -20,10 +45,15 @@
 
                             <div class="col-md-10">
 
-                                <div class="card p-3  py-4">
+                                <div class="card p-4  py-4 card_background" >
+
+                                <div style="width:100%; text-align:center">
+                                    <h3>Búsqueda de libros</h3>
+                                    <img class="card-img-top" src="{{asset('img/ad.jpg')}}" alt="Card image cap" style="width:35%; height: 35%;" >
+                                </div>
 
                                     <div class="col-md-5">
-                                        <h5>Búsqueda de libros</h5>
+
                                     </div>
                                     <form action="{{route('searchBook')}} " method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -51,6 +81,8 @@
                                         </div>
                                     </form>
                     </div>
+
+                                <div style="margin-top: 10em;"></div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +90,119 @@
     </div>
 </div>
 
-{{-- Search styles --}}
+</div>
+
+<footer class="text-center text-lg-start text-white my_footer" style="background-color: #45526e">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            {{-- <h6 class="text-uppercase mb-4 font-weight-bold">
+              Coordinación de Tecnologias para el Aprendizaje
+            </h6> --}}
+
+            {{-- <img src="img/cta_logo.jpg" alt="cta_logo" style="width: 160%; height: 100%; "> --}}
+
+
+
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          {{-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <p>
+              <a class="text-white">MDBootstrap</a>
+            </p>
+            <p>
+              <a class="text-white">MDWordPress</a>
+            </p>
+            <p>
+              <a class="text-white">BrandFlow</a>
+            </p>
+            <p>
+              <a class="text-white">Bootstrap Angular</a>
+            </p>
+          </div> --}}
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          {{-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Useful links
+            </h6>
+            <p>
+              <a class="text-white">Your Account</a>
+            </p>
+            <p>
+              <a class="text-white">Become an Affiliate</a>
+            </p>
+            <p>
+              <a class="text-white">Shipping Rates</a>
+            </p>
+            <p>
+              <a class="text-white">Help</a>
+            </p>
+          </div> --}}
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-12 col-xl-12 mt-3">
+          <div class="row justify-content-center">
+              <div class="col-md-4 ">
+                <img class="w-100" src="img/cta_logo.jpg" alt="cta_logo" ">
+              </div>
+              <div class="col-md-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+                <p><i class="fas fa-envelope mr-3"></i> cta.cucsh@administrativos.udg.mx</p>
+                <p><i class="fas fa-phone mr-3"></i> +52 33 3819 3300 ext: 23609</p>
+            </div>
+          </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <!-- Copyright -->
+            <div class="p-3">
+              Coordinación de Tecnologias para el Aprendizaje - Universidad de Guadalajara
+
+            </div>
+            <!-- Copyright -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+        </div>
+      </section>
+      <!-- Section: Copyright -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+
+{{-- Search resources --}}
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"> --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
