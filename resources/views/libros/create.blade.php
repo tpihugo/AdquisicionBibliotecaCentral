@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="container">
     @if(Auth::check())
         @if (session('message'))
@@ -16,9 +17,6 @@
               <h2>{{  $successMsg  }}</h2>
           </div>
         @endif
-
-        @php ($option = 1)
-
         <form action="{{route('libros.store')}}" method="post" enctype="multipart/form-data" class="col-12">
             <div class="row">
                 <div class="col">

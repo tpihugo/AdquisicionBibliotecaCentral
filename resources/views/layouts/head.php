@@ -30,18 +30,18 @@
         crossorigin="anonymous"
     />
     <!-- CSS Files -->
-    <link
+    <!-- <link
         href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1"
         rel="stylesheet"
-    />
-    <link
+    /> -->
+    <!-- <link
         rel="icon"
         href="{{asset('images/favicon.ico')}}"
-    />
-    <link
+    /> -->
+    <!-- <link
         href="{{ asset('css/app.css') }}"
         rel="stylesheet"
-    />
+    /> -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -68,12 +68,12 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
         crossorigin="anonymous"
     />
-    <link
+    <!-- <link
         rel="stylesheet"
         type="text/css"
         href="{{ asset('css/btnDT.css') }}"
-    />
-    <link
+    /> -->
+    <!-- <link
         rel="stylesheet"
         type="text/css"
         href="{{ asset('css/loader.css') }}"
@@ -82,4 +82,4 @@
         rel="stylesheet"
         type="text/css"
         href="{{ asset('css/main.css') }}"
-    />
+    /> -->

@@ -24,11 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lastInserted = Libro::where('activo',1)
-        ->orderBy('num_adquisicion','desc')
-        ->take(1)
-        ->pluck('num_adquisicion');
-        return view('home')->with('lastNum_adquisicion',$lastInserted[0]);
-        // return view('home');
+        return view('home');
+        // $lastInserted = Libro::where('activo',1)->orderBy('num_adquisicion','desc')->take(1)->pluck('num_adquisicion');
     }
 }
